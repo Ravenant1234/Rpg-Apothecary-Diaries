@@ -1,25 +1,41 @@
 package org.JuegoApothecaryDiaries;
-
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class Grimorio {
-    private Map<String, String> entradas = new HashMap<>();
+    private List<EntradaDiario> entradas;
 
-    public void registrar(String nombre, String descripcion) {
-        entradas.put(nombre, descripcion);
+    public Grimorio() {
+        this.entradas = new ArrayList<>();
     }
 
-    public void mostrar() {
-        System.out.println("--- GRIMORIO ---");
-        for (Map.Entry<String, String> entry : entradas.entrySet()) {
-            System.out.println("• " + entry.getKey() + ": " + entry.getValue());
+    public void agregarEntrada(EntradaDiario entrada) {
+        entradas.add(entrada);
+    }
+
+    public List<EntradaDiario> getEntradas() {
+        return entradas;
+    }
+
+    public List<EntradaDiario> buscarPorTipo(TipoEntrada tipo) {
+        return entradas.stream()
+                .filter(e -> e.getTipo() == tipo)
+                .collect(Collectors.toList());
+    }
+
+    public boolean estaEntradaDiario (EntradaDiario e){
+        Iterator i = entradas.listIterator();
+        boolean encontre = false;
+        while (i.hasNext() && !encontre)
+            encontre = e == (EntradaDiario) i.next();
+        return encontre;
+    }
+
+    public void imprimirTodo() {
+        for (EntradaDiario e : entradas) {
+            System.out.println(e);
         }
-    }
-
-    public static void main(String[] args) {
-        Grimorio g = new Grimorio();
-        g.registrar("Flor azul", "Planta que calma fiebres leves.");
-        g.registrar("Antídoto básico", "Neutraliza venenos comunes.");
-        g.mostrar();
     }
 }

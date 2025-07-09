@@ -2,24 +2,40 @@ package org.JuegoApothecaryDiaries;
 
 import java.util.*;
 
-import java.util.*;
-
 class Recipe {
-    String name;
-    Set<String> ingredients;
 
-    Recipe(String name, String... ingredients) {
+
+    private String name;
+    private Set<String> ingredients;
+
+    public Recipe(String name, String... ingredients) {
         this.name = name;
         this.ingredients = new HashSet<>(Arrays.asList(ingredients));
     }
 
-    boolean matches(Set<String> input) {
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Set<String> getIngredients() {
+        return ingredients;
+    }
+
+    public void setIngredients(Set<String> ingredients) {
+        this.ingredients = ingredients;
+    }
+
+    public boolean matches(Set<String> input) {
         return ingredients.equals(input);
     }
 }
 
 public class CraftingSystem {
-    static List<Recipe> knownRecipes = new ArrayList<>();
+    private static List<Recipe> knownRecipes = new ArrayList<>();
 
     static {
         knownRecipes.add(new Recipe("Antídoto básico", "Flor azul", "Raíz amarga"));
@@ -33,7 +49,7 @@ public class CraftingSystem {
 
         for (Recipe recipe : knownRecipes) {
             if (recipe.matches(input)) {
-                System.out.println("¡Has creado: " + recipe.name + "!");
+                System.out.println("¡Has creado: " + recipe.getName() + "!");
                 return;
             }
         }

@@ -1,39 +1,27 @@
 package org.JuegoApothecaryDiaries;
 
+import java.util.function.Predicate;
+
 public class DialogueEdge {
-    private String choiceText;
-    private String condition; // Opcional
-    private DialogueNode target;
-    int weight; // Puntos de relación
+    private String textoOpcion;
+    private String destinoId; // ID del nodo destino
+    private Predicate<GameState> condicion; // (opcional) condición para desbloquear
 
-    DialogueEdge(String choiceText, String condition, DialogueNode target, int weight) {
-        this.choiceText = choiceText;
-        this.condition = condition;
-        this.target = target;
-        this.weight = weight;
+    public DialogueEdge(String textoOpcion, String destinoId, Predicate<GameState> condicion) {
+        this.textoOpcion = textoOpcion;
+        this.destinoId = destinoId;
+        this.condicion = condicion;
     }
 
-    public DialogueNode getTarget() {
-        return target;
+    public String getTextoOpcion() {
+        return textoOpcion;
     }
 
-    public void setTarget(DialogueNode target) {
-        this.target = target;
+    public String getDestinoId() {
+        return destinoId;
     }
 
-    public String getCondition() {
-        return condition;
-    }
-
-    public void setCondition(String condition) {
-        this.condition = condition;
-    }
-
-    public String getChoiceText() {
-        return choiceText;
-    }
-
-    public void setChoiceText(String choiceText) {
-        this.choiceText = choiceText;
+    public boolean estaDisponible(GameState estado) {
+        return condicion == null || condicion.test(estado);
     }
 }

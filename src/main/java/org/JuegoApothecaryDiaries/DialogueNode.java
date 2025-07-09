@@ -8,12 +8,12 @@ public class DialogueNode {
     private String text;
     private List<DialogueEdge> options = new ArrayList<>();
 
-    DialogueNode(String id, String text) {
+    public DialogueNode(String id, String text) {
         this.id = id;
         this.text = text;
     }
 
-    void addOption(DialogueEdge edge) {
+    public void addOption(DialogueEdge edge) {
         options.add(edge);
     }
 

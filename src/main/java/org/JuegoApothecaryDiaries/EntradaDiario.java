@@ -1,29 +1,27 @@
 package org.JuegoApothecaryDiaries;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 public class EntradaDiario {
-    private String texto;
-    private Date fecha;
+    private String titulo;
+    private String descripcion;
+    private LocalDate fecha;
+    private TipoEntrada tipo;
 
-    public EntradaDiario(String texto) {
-        this.texto = texto;
-        this.fecha = new Date();
-    }
-
-    public void setFecha(Date fecha) {
+    public EntradaDiario(String titulo, String descripcion, LocalDate fecha, TipoEntrada tipo) {
+        this.titulo = titulo;
+        this.descripcion = descripcion;
         this.fecha = fecha;
+        this.tipo = tipo;
     }
 
-    public void setTexto(String texto) {
-        this.texto = texto;
-    }
+    public String getTitulo() { return titulo; }
+    public String getDescripcion() { return descripcion; }
+    public LocalDate getFecha() { return fecha; }
+    public TipoEntrada getTipo() { return tipo; }
 
-    public Date getFecha() {
-        return fecha;
-    }
-
-    public String getTexto() {
-        return texto;
+    @Override
+    public String toString() {
+        return "[" + tipo + "] " + titulo + " (" + fecha + "):\n" + descripcion + "\n";
     }
 }

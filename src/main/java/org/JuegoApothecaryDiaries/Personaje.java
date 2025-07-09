@@ -13,16 +13,13 @@ public class Personaje {
 
     protected int carisma;
     protected int curiosidad;
-
     private List<Item> inventario;
-    private List<EntradaDiario> diario;
     private Map<String, Integer> reputacion;
 
     public Personaje(String nombre) {
         this.nombre = nombre;
         this.nivel = 1;
         inventario = new ArrayList<>();
-        diario = new ArrayList<>();
         reputacion = new HashMap<>();
         // Inicialización con stats base (personalizable)
     }
@@ -35,16 +32,8 @@ public class Personaje {
         inventario.add(item);
     }
 
-    public void anotarDiario(String observacion) {
-        diario.add(new EntradaDiario(observacion));
-    }
-
     public void setNombre(String nom){
         nombre = nom;
-    }
-
-    public void setDiario(List<EntradaDiario> d){
-        diario = d;
     }
 
     public void setReputacion(String nombrePersonaje, int reputacion){
@@ -59,10 +48,6 @@ public class Personaje {
 
     public String getNombre() {
         return nombre;
-    }
-
-    public List<EntradaDiario> getDiario(){
-        return diario;
     }
 
     public Map<String,Integer> getReputacion(){

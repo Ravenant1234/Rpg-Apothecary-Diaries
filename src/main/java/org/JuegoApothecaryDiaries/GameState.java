@@ -9,6 +9,18 @@ public class GameState {
     private Set<String> flags = new HashSet<>();
     private Map<String, Integer> scores = new HashMap<>();
 
+    private Maomao maomao;
+    private String ubicacionActual;
+    private Set<String> eventosActivados;
+    private int dia;
+
+    public GameState(Maomao maomao) {
+        this.maomao = maomao;
+        this.ubicacionActual = "Palacio Central";
+        this.eventosActivados = new HashSet<>();
+        this.dia = 1;
+    }
+
     boolean evaluate(String condition) {
         if (condition == null || condition.isEmpty()) return true;
         for (String part : condition.split("&&")) {
@@ -28,5 +40,30 @@ public class GameState {
 
     int getScore(String key) {
         return scores.getOrDefault(key, 0);
+    }
+
+
+
+
+
+    public Maomao getMaomao() { return maomao; }
+    public String getUbicacionActual() { return ubicacionActual; }
+    public Set<String> getEventosActivados() { return eventosActivados; }
+    public int getDia() { return dia; }
+
+    public void setUbicacionActual(String ubicacion) {
+        this.ubicacionActual = ubicacion;
+    }
+
+    public void avanzarDia() {
+        dia++;
+    }
+
+    public void activarEvento(String evento) {
+        eventosActivados.add(evento);
+    }
+
+    public boolean estaEventoActivo(String evento) {
+        return eventosActivados.contains(evento);
     }
 }

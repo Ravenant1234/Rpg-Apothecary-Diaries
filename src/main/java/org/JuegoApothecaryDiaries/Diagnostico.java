@@ -1,23 +1,44 @@
 package org.JuegoApothecaryDiaries;
 
+import java.util.List;
+
 public class Diagnostico {
+    private Enfermedad enfermedadSospechada;
+    private List<String> sintomasObservados;
+    private boolean correcto;
 
-    public static boolean intentarDiagnosticar(Maomao m, Enfermedad e) {
-        int base = (m.inteligencia + m.percepcion + m.conocimientoHerbal) / 3;
-        int modificador = (int) (Math.random() * 6 - 2); // entre -2 y +3
-        int resultado = base + modificador;
+    public Diagnostico(Enfermedad enfermedadSospechada, List<String> sintomasObservados) {
+        this.enfermedadSospechada = enfermedadSospechada;
+        this.sintomasObservados = sintomasObservados;
+        this.correcto = evaluar();
+    }
 
-        System.out.println("⚗️ Maomao analiza los síntomas...");
+    private boolean evaluar() {
+        List<Sintoma> sintomasEnfermedad = enfermedadSospechada.getSintomas();
+        int coincidencias = 0;
 
-        if (resultado >= e.getDificultad() + 2) {
-            System.out.println("✅ Diagnóstico exitoso: " + e.getNombre());
-            return true;
-        } else if (resultado >= e.getDificultad() - 2) {
-            System.out.println("❔ Diagnóstico incierto, pero posible sospecha: " + e.getNombre());
-            return false;
-        } else {
-            System.out.println("❌ Diagnóstico fallido.");
-            return false;
+        for (String observado : sintomasObservados) {
+            for (Sintoma real : sintomasEnfermedad) {
+                if (real.getDescripcion().equalsIgnoreCase(observado)) {
+                    coincidencias++;
+                }
+            }
         }
+
+        // Ejemplo: se requiere al menos la mitad de los síntomas para considerarlo correcto
+        return coincidencias >= (sintomasEnfermedad.size() / 2);
+    }
+
+    public boolean esCorrecto() {
+        return correcto;
+    }
+
+    public Enfermedad getEnfermedadSospechada() {
+        return enfermedadSospechada;
+    }
+
+    public List<String> getSintomasObservados() {
+        return sintomasObservados;
     }
 }
+

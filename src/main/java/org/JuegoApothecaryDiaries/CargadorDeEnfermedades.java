@@ -5,7 +5,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.File;
 import java.util.List;
 
-
 public class CargadorDeEnfermedades {
     public static List<Enfermedad> cargar(String ruta) throws Exception {
         ObjectMapper mapper = new ObjectMapper();
