@@ -1,0 +1,20 @@
+﻿[
+  {
+    "nombre": "Intoxicación por mercurio",
+    "dificultad": 7,
+    "sintomas": [
+      {"descripcion": "Temblores"},
+      {"descripcion": "Lengua azulada"},
+      {"descripcion": "Fatiga extrema"}
+    ]
+  },
+  {
+    "nombre": "Fiebre del loto",
+    "dificultad": 5,
+    "sintomas": [
+      {"descripcion": "Sudor frío" },
+      {"descripcion": "Pulso débil"},
+      {"descripcion": "Somnolencia"}
+    ]
+  }
+]
