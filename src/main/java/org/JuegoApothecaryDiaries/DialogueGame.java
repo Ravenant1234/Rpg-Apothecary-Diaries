@@ -10,8 +10,8 @@ public class DialogueGame {
         Maomao m = new Maomao();
         GameState state = new GameState(m);
 
-
-                                    DialogueGraph grafo;
+/*
+                                    DialogueGraph grafo = new DialogueGraph();
 
                                     DialogueNode n1 = new DialogueNode("1", "¿Te sentís bien?");
                                     n1.addOption(new DialogueEdge("Sí, sólo cansada.", "2",state->state.));
@@ -27,6 +27,8 @@ public class DialogueGame {
                                     grafo.agregarNodo(n1);
                                     grafo.agregarNodo(n2);
                                     grafo.agregarNodo(n3);
+                              */
+
 
         DialogueGraph grafoDialogo = new DialogueGraph();
 
@@ -42,10 +44,10 @@ public class DialogueGame {
 
 
         // Transiciones
-        intro.addOption(new DialogueEdge("Decir la verdad", , confianza, +5));
-        intro.addOption(new DialogueEdge("Mentir", , sospecha, -5));
+        intro.addOption(new DialogueEdge("Decir la verdad", confianza, +5));
+        intro.addOption(new DialogueEdge("Mentir", sospecha, -5));
 
-        sospecha.addOption(new DialogueEdge("Insistir con una excusa", , detencion, -5));
+        sospecha.addOption(new DialogueEdge("Insistir con una excusa" , detencion, -5));
         sospecha.addOption(new DialogueEdge("Decir la verdad ahora", confianza, +3));
 
         // Diálogo
@@ -56,20 +58,20 @@ public class DialogueGame {
 
             List<DialogueEdge> valid = new ArrayList<>();
             for (DialogueEdge edge : current.getOptions()) {
-                if (state.evaluate(edge.getCondition())) {
+                if (state.evaluate(edge.getCondicion())) {
                     valid.add(edge);
                 }
             }
 
             for (int i = 0; i < valid.size(); i++) {
-                System.out.println((i + 1) + ". " + valid.get(i).getChoiceText());
+                System.out.println((i + 1) + ". " + valid.get(i).getTextoOpcion());
             }
 
             System.out.print("> ");
             int choice = in.nextInt() - 1;
             DialogueEdge selected = valid.get(choice);
             state.applyWeight("guardia", selected.getWeight());
-            current = selected.getTarget();
+            current = selected.getDestinoId();
         }
 
         int reputacionGuardia = state.getScore("guardia");
