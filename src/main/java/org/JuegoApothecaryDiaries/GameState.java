@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
+import java.util.function.Predicate;
 
 public class GameState {
     private Set<String> flags = new HashSet<>();
@@ -21,6 +22,9 @@ public class GameState {
         this.dia = 1;
     }
 
+    boolean evaluate (Predicate<GameState> p){
+
+    }
     boolean evaluate(String condition) {
         if (condition == null || condition.isEmpty()) return true;
         for (String part : condition.split("&&")) {
