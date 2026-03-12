@@ -2,7 +2,7 @@ public class Evento{
     //cada tipo de evento, por ejemplo "Quest", "Hallazgo" tiene un id que lo identifica y una descripcion y los "participantes" como una referencia a objetos
     
     private enum Tipo{
-        HALLAZGO_ITEM, DIALOGO, ENEMIGO, COMBATE, VIAJE 
+        HALLAZGO_ITEM, DIALOGO, ENEMIGO, COMBATE, VIAJE, DIAGNOSTICO 
     }
 
     private boolean TRIGGERED;
