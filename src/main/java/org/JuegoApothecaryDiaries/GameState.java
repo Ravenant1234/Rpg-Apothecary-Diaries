@@ -12,7 +12,7 @@ public class GameState {
 
     private Maomao maomao;
     private String ubicacionActual;
-    private Set<Evento> eventosActivados;
+    private Set<Evento> eventosActivados; //CAMBIAR EVENTOS ACTIVADOS A EVENTOS Y PONER CHECKS DE ACTIVADO, DESACTIVADO
     
     //Set<Evento> es mejor
     //Evento puede tener un enum "tipo" donde tipo puede ser "Quest", "Hallazgo", etc
@@ -78,4 +78,5 @@ public class GameState {
     }
 
 }
+
 
