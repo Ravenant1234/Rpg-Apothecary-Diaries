@@ -12,7 +12,7 @@ public class GameState {
 
     private Maomao maomao;
     private String ubicacionActual;
-    private Set<String> eventosActivados;
+    private Set<Evento> eventosActivados;
     
     //Set<Evento> es mejor
     //Evento puede tener un enum "tipo" donde tipo puede ser "Quest", "Hallazgo", etc
@@ -78,3 +78,4 @@ public class GameState {
     }
 
 }
+
