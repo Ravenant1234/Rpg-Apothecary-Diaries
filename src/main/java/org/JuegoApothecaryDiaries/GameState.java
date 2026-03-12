@@ -7,7 +7,6 @@ import java.util.Set;
 import java.util.function.Predicate;
 
 public class GameState {
-    private Set<String> flags = new HashSet<>();
     private Map<String, Integer> scores = new HashMap<>();
 
     private Maomao maomao;
@@ -36,9 +35,9 @@ public class GameState {
         for (String part : condition.split("&&")) {
             part = part.trim();
             if (part.startsWith("!")) {
-                if (flags.contains(part.substring(1))) return false;
+                if (eventosActivados.contains(part.substring(1))) return false;
             } else {
-                if (!flags.contains(part)) return false;
+                if (!eventosActivados.contains(part)) return false;
             }
         }
         return true;
@@ -78,5 +77,6 @@ public class GameState {
     }
 
 }
+
 
 
