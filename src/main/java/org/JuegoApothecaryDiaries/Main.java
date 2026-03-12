@@ -2,6 +2,11 @@ package org.JuegoApothecaryDiaries;
 
 import java.util.List;
 
+import org.JuegoApothecaryDiaries.Logica.CargadorDeEnfermedades;
+import org.JuegoApothecaryDiaries.Logica.DiagnosticoUtil;
+import org.JuegoApothecaryDiaries.Logica.Enfermedad;
+import org.JuegoApothecaryDiaries.Personajes.Maomao;
+
 public class Main {
     public static void main(String[] args) {
         List<Enfermedad> enfermedades = null;
