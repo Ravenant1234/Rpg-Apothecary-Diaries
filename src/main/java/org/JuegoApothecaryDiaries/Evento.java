@@ -25,7 +25,7 @@ public class Evento{
         TRIGGERED = FALSE;
     }
 
-    public void agregarParticipante (Participante p){
+    public void agregarParticipante (Personaje p){
         participantes.insert (p);
     }
 
@@ -45,7 +45,7 @@ public class Evento{
         return participantes;
     }
 
-    public boolean estaParticipante (Participante p){
+    public boolean estaParticipante (Personaje p){
         return participantes.get (p);
     }
     
