@@ -26,7 +26,8 @@ public class Diagnostico {
         }
 
         // Ejemplo: se requiere al menos la mitad de los síntomas para considerarlo correcto
-        return coincidencias >= (sintomasEnfermedad.size() / 2);
+        correcto = coincidencias >= (sintomasEnfermedad.size() / 2)
+        return correcto;
     }
 
     public boolean esCorrecto() {
@@ -41,4 +42,5 @@ public class Diagnostico {
         return sintomasObservados;
     }
 }
+
 
