@@ -6,13 +6,13 @@ public class Evento{
     }
 
     private boolean TRIGGERED;
-    private Tipo tipoEvento;
+    private TipoEvento tipo;
     private String descripcion;
     private Set<Personaje> participantes;
   
-    public Evento (Tipo tipoEvento, String descripcion, Set<Personaje> participantes){
+    public Evento (TipoEvento tipo, String descripcion, Set<Personaje> participantes){
         TRIGGERED = FALSE;
-        this.tipoEvento = tipoEvento;
+        this.tipo = tipo;
         this.descripcion = descripcion;
         this.participantes = participantes;
     }
@@ -34,7 +34,7 @@ public class Evento{
     }
 
     public enum tipoEvento (){
-        return tipoEvento;
+        return tipo;
     }
 
     public String getDescripcion (){
