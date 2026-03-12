@@ -13,6 +13,12 @@ public class GameState {
     private Maomao maomao;
     private String ubicacionActual;
     private Set<String> eventosActivados;
+    
+    //Set<Evento> es mejor
+    //Evento puede tener un enum "tipo" donde tipo puede ser "Quest", "Hallazgo", etc
+    //Y cada tipo de evento, por ejemplo "Quest", "Hallazgo" tiene un id que lo identifica y una descripcion y los "participantes" como una referencia a objetos
+    //private Set<Evento> eventosActivados;
+    
     private int dia;
 
     public GameState(Maomao maomao) {
@@ -70,4 +76,5 @@ public class GameState {
     public boolean estaEventoActivo(String evento) {
         return eventosActivados.contains(evento);
     }
+
 }
