@@ -8,11 +8,19 @@ public class DialogueEdge {
     private Predicate<GameState> condicion; // (opcional) condición para desbloquear
     private int reputacion;
 
-    public DialogueEdge(String textoOpcion, DialogueNode destino, int reputacion) {
+    public DialogueEdge(String textoOpcion, DialogueNode destino, int reputacion, Predicate<GameState> condicion) {
         this.textoOpcion = textoOpcion;
         this.destinoId = destino.getId();
-        this.condicion = estado -> true;
+        this.condicion = condicion;
         this.reputacion = reputacion;
+    }
+
+    public DialogueEdge(String textoOpcion, DialogueNode destino, int reputacion) {
+        this(textoOpcion, destino, reputacion, estado -> true);
+    }
+
+    public int getWeight() {
+        return reputacion;
     }
 
     public String getTextoOpcion() {

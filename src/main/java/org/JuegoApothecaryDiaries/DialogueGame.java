@@ -44,11 +44,11 @@ public class DialogueGame {
 
 
         // Transiciones
-        intro.addOption(new DialogueEdge("Decir la verdad", confianza, +5));
-        intro.addOption(new DialogueEdge("Mentir", sospecha, -5));
+        intro.addOption(new DialogueEdge("Decir la verdad", state , confianza, +5));
+        intro.addOption(new DialogueEdge("Mentir", ,sospecha, -5));
 
-        sospecha.addOption(new DialogueEdge("Insistir con una excusa" , detencion, -5));
-        sospecha.addOption(new DialogueEdge("Decir la verdad ahora", confianza, +3));
+        sospecha.addOption(new DialogueEdge("Insistir con una excusa", , detencion, -5));
+        sospecha.addOption(new DialogueEdge("Decir la verdad ahora", , confianza, +3));
 
         // Diálogo
         DialogueNode current = intro;

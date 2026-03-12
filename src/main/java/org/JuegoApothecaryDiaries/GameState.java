@@ -28,8 +28,7 @@ public class GameState {
     }
 
     boolean evaluate (Predicate<GameState> p){
-        
-
+        return p == null || p.test(this);
     }
 
     boolean evaluate(String condition) {
