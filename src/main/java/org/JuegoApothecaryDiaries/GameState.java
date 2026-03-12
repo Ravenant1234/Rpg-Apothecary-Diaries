@@ -11,7 +11,7 @@ public class GameState {
 
     private Maomao maomao;
     private String ubicacionActual;
-    private Set<Evento> eventosActivados; //CAMBIAR EVENTOS ACTIVADOS A EVENTOS Y PONER CHECKS DE ACTIVADO, DESACTIVADO
+    private Set<Evento> eventos; //CAMBIAR EVENTOS ACTIVADOS A EVENTOS Y PONER CHECKS DE ACTIVADO, DESACTIVADO
     
     //Set<Evento> es mejor
     //Evento puede tener un enum "tipo" donde tipo puede ser "Quest", "Hallazgo", etc
@@ -23,21 +23,23 @@ public class GameState {
     public GameState(Maomao maomao) {
         this.maomao = maomao;
         this.ubicacionActual = "Palacio Central";
-        this.eventosActivados = new HashSet<>();
+        this.eventos = new HashSet<>();
         this.dia = 1;
     }
 
     boolean evaluate (Predicate<GameState> p){
+        
 
     }
+
     boolean evaluate(String condition) {
         if (condition == null || condition.isEmpty()) return true;
         for (String part : condition.split("&&")) {
             part = part.trim();
             if (part.startsWith("!")) {
-                if (eventosActivados.contains(part.substring(1))) return false;
+                if (eventos.contains(part.substring(1))) return false;
             } else {
-                if (!eventosActivados.contains(part)) return false;
+                if (!eventos.contains(part)) return false;
             }
         }
         return true;
@@ -57,7 +59,15 @@ public class GameState {
 
     public Maomao getMaomao() { return maomao; }
     public String getUbicacionActual() { return ubicacionActual; }
-    public Set<String> getEventosActivados() { return eventosActivados; }
+    public Set<Evento> getEventosActivados() { 
+        Set<Evento> activados = new HashSet<>();
+        for (Evento evento : eventos) {
+            if (evento.estaActivado()) {
+                activados.add(evento);
+            }
+        }
+        return activados;
+     }
     public int getDia() { return dia; }
 
     public void setUbicacionActual(String ubicacion) {
@@ -68,12 +78,17 @@ public class GameState {
         dia++;
     }
 
-    public void activarEvento(String evento) {
-        eventosActivados.add(evento);
+    public void activarEvento(String id) {
+        for (Evento evento : eventos) {
+            if (evento.getId().equals(id)) {
+                evento.activarEvento();
+                break;
+            }
+        }
     }
 
     public boolean estaEventoActivo(String evento) {
-        return eventosActivados.contains(evento);
+        return eventos.stream().anyMatch(e -> e.getId().equals(evento) && e.estaActivado());
     }
 
 }

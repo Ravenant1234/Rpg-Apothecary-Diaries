@@ -1,7 +1,8 @@
+import java.util.Set;
 public class Evento{
     //cada tipo de evento, por ejemplo "Quest", "Hallazgo" tiene un id que lo identifica y una descripcion y los "participantes" como una referencia a objetos
     
-    private enum Tipo{
+    private enum TipoEvento{
         HALLAZGO_ITEM, DIALOGO, ENEMIGO, COMBATE, VIAJE, DIAGNOSTICO 
     }
 
@@ -9,31 +10,34 @@ public class Evento{
     private TipoEvento tipo;
     private String descripcion;
     private Set<Personaje> participantes;
+    private String id;
   
-    public Evento (TipoEvento tipo, String descripcion, Set<Personaje> participantes){
-        TRIGGERED = FALSE;
+    public Evento (TipoEvento tipo, String descripcion, Set<Personaje> participantes, String id){
+        TRIGGERED = false;
         this.tipo = tipo;
         this.descripcion = descripcion;
         this.participantes = participantes;
+        this.id = id;
+
     }
 
     public void activarEvento (){
-        TRIGGERED = TRUE;
+        TRIGGERED = true;
     }
 
     public void desactivarEvento (){
-        TRIGGERED = FALSE;
+        TRIGGERED = false;
     }
 
     public void agregarParticipante (Personaje p){
-        participantes.insert (p);
+        participantes.add(p);
     }
 
     public boolean estaActivado (){
         return TRIGGERED;
     }
 
-    public enum tipoEvento (){
+    public TipoEvento tipoEvento (){
         return tipo;
     }
 
@@ -46,7 +50,11 @@ public class Evento{
     }
 
     public boolean estaParticipante (Personaje p){
-        return participantes.get (p);
+        return participantes.contains(p);
+    }
+
+    public String getId() {
+        return id;
     }
     
 }

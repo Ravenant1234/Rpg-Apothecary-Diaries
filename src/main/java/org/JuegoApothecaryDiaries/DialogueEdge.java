@@ -30,4 +30,8 @@ public class DialogueEdge {
     public Predicate<GameState> getCondicion() {
         return condicion;
     }
+
+    public int getReputacion() {
+        return reputacion;
+    }
 }
